@@ -3,6 +3,7 @@ package br.com.projeto.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+import org.hibernate.annotations.ForeignKey;
 
 /**
  *
@@ -33,6 +34,10 @@ public class Pessoa implements Serializable {
     @Column(name="Data_de_Cadastro", nullable=false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataDeCadastro;
+    
+    @ManyToOne(optional = false)
+    @ForeignKey(name = "PessoaSexo")
+    private Pessoa pessoa;
 
     public Pessoa() {
     }
