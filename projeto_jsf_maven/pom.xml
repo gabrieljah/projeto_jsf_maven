@@ -1,9 +1,8 @@
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.projeto</groupId>
+  <groupId>br.com.projeto</groupId>
     <artifactId>projeto_jsf_maven</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -116,14 +115,14 @@
             <url>http://maven.springframework.org/milestone</url>
         </repository>
        
-        <!-- REPOSITÃ“RIO DA AOP ALLIANCE -->
+        <!-- REPOSITÓRIO DA AOP ALLIANCE -->
         <repository>
             <id>spring-ext</id>
             <name>Spring External Dependencies Repository</name>
             <url>https://svn.sourceforge.net/svnroot/springframework/repos/repo-ext/</url>
         </repository>       
         
-        <!-- REPOSITÃ“RIO DO JASPER REPORTS -->        
+        <!-- REPOSITÓRIO DO JASPER REPORTS -->        
         <repository>
             <id>jasperreports</id>
             <url>http://repo1.maven.org/maven2/</url>
@@ -139,7 +138,7 @@
             <scope>provided</scope>
         </dependency>
         
-        <!-- || DEPENDÃŠNCIAS DO JAVA SERVER FACES || -->                        
+        <!-- || DEPENDÊNCIAS DO JAVA SERVER FACES || -->                        
         <!-- ############## JSF-API ################ -->
         <dependency>
             <groupId>com.sun.faces</groupId>
@@ -176,7 +175,7 @@
             <version>2.1</version>
         </dependency>
         
-        <!-- ##### DEPENDÃŠNCIAS DO PRIMEFACES ##### -->
+        <!-- ##### DEPENDÊNCIAS DO PRIMEFACES ##### -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
@@ -239,7 +238,7 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <!-- |||||| DEPENDÃŠNCIAS DO HIBERNATE |||||| -->
+        <!-- |||||| DEPENDÊNCIAS DO HIBERNATE |||||| -->
 
         <!-- ########### HIBERNATE-C3P0 ############ -->
         <dependency>
@@ -355,21 +354,21 @@
             <version>2.4.3</version>
         </dependency>            
 
-        <!-- || DEPENDÃŠNCIAS DO JAVAX-PERSISTENCE || -->
+        <!-- || DEPENDÊNCIAS DO JAVAX-PERSISTENCE || -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
         </dependency>
         
-        <!-- |||| DEPENDÃŠNCIAS DO MYSQL DRIVER  |||| -->        
+        <!-- |||| DEPENDÊNCIAS DO MYSQL DRIVER  |||| -->        
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency> 
         
-        <!-- |||| DEPENDÃŠNCIAS DO SPRING-SECURITY || -->  
+        <!-- |||| DEPENDÊNCIAS DO SPRING-SECURITY || -->  
                                                  
         <!-- ### FACELETS-TAGLIB-JSF2.0-SPRING-3 ### -->
         <dependency>
@@ -422,7 +421,7 @@
             <version>3.0.5.RELEASE</version>
         </dependency>
 
-        <!-- ||| DEPENDÃŠNCIAS DO SPRING FRAMEWORK |||-->          
+        <!-- ||| DEPENDÊNCIAS DO SPRING FRAMEWORK |||-->          
         <!-- ############# SPRING-ASM ############## -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -502,7 +501,7 @@
             <version>1.0.0</version>
         </dependency> 
         
-        <!-- ||||||| DEPENDÃŠNCIAS DO J-UNIT |||||||| -->        
+        <!-- ||||||| DEPENDÊNCIAS DO J-UNIT |||||||| -->        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -512,5 +511,33 @@
         
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>         
+    </build>
+       
 
 </project>
