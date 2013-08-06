@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.projeto.model.entity;
+package br.com.projeto.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.Column;

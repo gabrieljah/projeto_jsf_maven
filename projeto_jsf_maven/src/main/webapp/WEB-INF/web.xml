@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     
-    <display-name>Projeto_Jsf_Maven</display-name>
+    <display-name>projeto_jsf_maven</display-name>
     
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -21,13 +21,15 @@
     </session-config>
     
      <!-- Endereço dos arquivos de configuração do Spring -->
-    
+   <!-- 
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/spring-security.xml
         </param-value>
     </context-param> 
+    
+    -->
 
     <!-- Configurações do tema do PrimeFaces -->
     <context-param>  
@@ -36,6 +38,7 @@
     </context-param>         
     
     <!-- Filtros do Spring  -->
+    <!--
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -49,7 +52,7 @@
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-    
+  -->  
         <!-- Configurações do JavaServer Faces -->
     
     <context-param>
