@@ -11,24 +11,22 @@ import org.hibernate.Session;
  */
 public class PhaseListenerProjeto implements PhaseListener {
 
-    //Antes da Fase
+   //Antes da Fase
     @Override
     public void beforePhase(PhaseEvent fase) {
-        System.out.println("Antes da Fase: " + getPhaseId());
-        if (fase.getPhaseId().equals(PhaseId.RESTORE_VIEW)) {
-            
+        System.out.println("Antes da fase: "+ fase.getPhaseId());
+        if (fase.getPhaseId().equals(PhaseId.RESTORE_VIEW)) {            
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            FacesContextUtil.getRequestSession();
+            FacesContextUtil.setRequestSession(session);            
         }
     }
-
+    
     //Depois da Fase
     @Override
     public void afterPhase(PhaseEvent fase) {
-        System.out.println("Depois da Fase: " + getPhaseId());
+        System.out.println("Depois da fase: "+ fase.getPhaseId());
         if (fase.getPhaseId().equals(PhaseId.RENDER_RESPONSE)) {
-            
             Session session = FacesContextUtil.getRequestSession();
             try {
                 session.getTransaction().commit();
@@ -36,12 +34,10 @@ public class PhaseListenerProjeto implements PhaseListener {
                 if (session.getTransaction().isActive()) {
                     session.getTransaction().rollback();
                 }
-            }finally{
+            } finally{
                 session.close();
             }
-            
         }
-        
     }
 
     @Override
