@@ -23,7 +23,7 @@ public class TipoLogradouro implements Serializable{
     @GeneratedValue
     @Column(name="IdTipoLogradouro", nullable = false)
     private Integer idTipoLogradouro;
-    @Column(name="Descricao_Tipo_Logradouro", length = 80, nullable=false)
+    @Column(name="DescricaoTipoLogradouro", length = 80, nullable=false)
     private String descricaoTipoLogradouro;
     
     @OneToMany(mappedBy = "tipoLogradouro", fetch = FetchType.LAZY)

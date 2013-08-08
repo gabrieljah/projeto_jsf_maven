@@ -23,7 +23,7 @@ public class TipoEndereco implements Serializable{
     @GeneratedValue
     @Column(name="IdTipoEndereco", nullable = false)
     private Integer idTipoEndereco;
-    @Column(name="Descricao_Tipo_Endereco", length = 80, nullable=false)
+    @Column(name="DescricaoTipoEndereco", length = 80, nullable=false)
     private String descricaoTipoEndereco;
     
     @OneToMany(mappedBy = "tipoEndereco", fetch = FetchType.LAZY)

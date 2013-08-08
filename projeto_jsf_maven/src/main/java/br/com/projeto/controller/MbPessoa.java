@@ -6,7 +6,9 @@ import br.com.projeto.model.entities.Endereco;
 import br.com.projeto.model.entities.Pessoa;
 import br.com.projeto.util.FacesContextUtil;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import javax.enterprise.inject.New;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -53,7 +55,9 @@ public class MbPessoa implements Serializable {
     }
     
     public String addPessoa(){
+        Date date = new Date();
         if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0 ){
+            pessoa.setDataDeCadastro(date);
             insertPessoa();
         }else{
             updatePessoa();
@@ -63,18 +67,22 @@ public class MbPessoa implements Serializable {
 
     private void insertPessoa() {
         pessoaDAO().save(pessoa);
+        endereco.setPessoa(pessoa);
+        enderecoDAO().save(endereco);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, " Gravação efetuada com sucesso", ""));
     }
 
     private void updatePessoa() {
         pessoaDAO().update(pessoa);
+        enderecoDAO().update(endereco);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, " Atualização efetuada com sucesso", ""));
     }
     
     public void deletePessoa(){
         pessoaDAO().remove(pessoa);
+        enderecoDAO().remove(endereco);
          FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, " Remoção efetuada com sucesso", ""));
     }
