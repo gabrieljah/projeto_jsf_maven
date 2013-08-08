@@ -189,6 +189,18 @@
             <version>${themes.version}</version> 
         </dependency> 
         
+         <dependency>              
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>sunny</artifactId>              
+            <version>${themes.version}</version> 
+        </dependency>
+        
+         <dependency>              
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>start</artifactId>              
+            <version>${themes.version}</version> 
+        </dependency>
+        
         <dependency>  
             <groupId>org.primefaces.themes</groupId>  
             <artifactId>le-frog</artifactId>  
