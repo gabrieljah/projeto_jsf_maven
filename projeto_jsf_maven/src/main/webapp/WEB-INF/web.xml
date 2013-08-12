@@ -21,7 +21,7 @@
     </session-config>
     
      <!-- Endereço dos arquivos de configuração do Spring -->
-   <!-- 
+   
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -29,7 +29,7 @@
         </param-value>
     </context-param> 
     
-    -->
+    
 
     <!-- Configurações do tema do PrimeFaces -->
     <context-param>  
@@ -38,7 +38,7 @@
     </context-param>         
     
     <!-- Filtros do Spring  -->
-    <!--
+    
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -52,7 +52,7 @@
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-  -->  
+   
         <!-- Configurações do JavaServer Faces -->
     
     <context-param>

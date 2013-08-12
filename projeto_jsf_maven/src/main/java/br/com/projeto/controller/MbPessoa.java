@@ -1,5 +1,6 @@
 package br.com.projeto.controller;
 
+import br.com.projeto.conversores.ConverterSHA1;
 import br.com.projeto.model.dao.HibernateDAO;
 import br.com.projeto.model.dao.InterfaceDAO;
 import br.com.projeto.model.entities.Endereco;
@@ -26,6 +27,7 @@ public class MbPessoa implements Serializable {
     private Endereco endereco = new Endereco();
     private List<Pessoa> pessoas;
     private List<Endereco> enderecos;
+    private String confereSenha;
 
     public MbPessoa() {
     }
@@ -49,16 +51,16 @@ public class MbPessoa implements Serializable {
     }
 
     public String editPessoa() {
-        
+
         return "/restrict/cadastrarpessoa.faces";
     }
-    
-    public String addPessoa(){
+
+    public String addPessoa() {
         Date date = new Date();
-        if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0 ){
+        if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0) {
             pessoa.setDataDeCadastro(date);
             insertPessoa();
-        }else{
+        } else {
             updatePessoa();
         }
         limpPessoa();
@@ -66,25 +68,41 @@ public class MbPessoa implements Serializable {
     }
 
     private void insertPessoa() {
-        pessoaDAO().save(pessoa);
-        endereco.setPessoa(pessoa);
-        enderecoDAO().save(endereco);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, " Gravação efetuada com sucesso", ""));
+        pessoa.setSenha(ConverterSHA1.cipher(pessoa.getSenha()));
+        if (pessoa.getSenha() == null ? confereSenha == null : pessoa.getSenha().equals(ConverterSHA1.cipher(confereSenha))) {
+            pessoa.setPermissao("ROLE_ADMIN");
+            pessoaDAO().save(pessoa);
+            endereco.setPessoa(pessoa);
+            enderecoDAO().save(endereco);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, " Gravação efetuada com sucesso", ""));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, " As Senhas não conferem.", ""));
+
+        }
     }
 
     private void updatePessoa() {
+         pessoa.setSenha(ConverterSHA1.cipher(pessoa.getSenha()));
+        if (pessoa.getSenha() == null ? confereSenha == null : pessoa.getSenha().equals(ConverterSHA1.cipher(confereSenha))) {
+            pessoa.setPermissao("ROLE_ADMIN");
         pessoaDAO().update(pessoa);
         endereco.setPessoa(pessoa);
         enderecoDAO().update(endereco);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, " Atualização efetuada com sucesso", ""));
+          } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, " As Senhas não conferem.", ""));
+
+        }
     }
-    
-    public void deletePessoa(){
+
+    public void deletePessoa() {
         pessoaDAO().remove(pessoa);
         enderecoDAO().remove(endereco);
-         FacesContext.getCurrentInstance().addMessage(null,
+        FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, " Remoção efetuada com sucesso", ""));
     }
 
@@ -121,6 +139,12 @@ public class MbPessoa implements Serializable {
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
-    
-    
+
+    public String getConfereSenha() {
+        return confereSenha;
+    }
+
+    public void setConfereSenha(String confereSenha) {
+        this.confereSenha = confereSenha;
+    }
 }
