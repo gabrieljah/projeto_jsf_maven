@@ -11,7 +11,7 @@ import org.hibernate.annotations.ForeignKey;
  * @author gabriel
  */
 @Entity
-@Table(name="sexo")
+@Table(name="SEXO")
 public class Sexo implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -21,8 +21,8 @@ public class Sexo implements Serializable{
     @GeneratedValue
     @Column(name="IdSexo")
     private Integer idSexo;
-    @Column(name="Descricao", nullable=false, unique=true, length=9)
-    private String descricao;
+    @Column(name="DescricaoSexo", nullable=false, unique=true, length=9)
+    private String descricaoSexo;
     
     @OneToMany(mappedBy = "sexo", fetch = FetchType.LAZY)
     @ForeignKey(name = "PessoaSexo")
@@ -32,11 +32,11 @@ public class Sexo implements Serializable{
     }
 
     public String getDescricao() {
-        return descricao;
+        return descricaoSexo;
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricaoSexo = descricao;
     }
 
     public Integer getIdSexo() {

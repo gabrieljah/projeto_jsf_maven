@@ -17,7 +17,7 @@ import org.hibernate.annotations.ForeignKey;
  * @author gabriel
  */
 @Entity
-@Table(name="cidade")
+@Table(name="CIDADE")
 public class Cidade implements Serializable{
     
       private static final long serialVersionUID = 1L;

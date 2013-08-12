@@ -8,7 +8,6 @@ import br.com.projeto.util.FacesContextUtil;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.enterprise.inject.New;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -50,7 +49,7 @@ public class MbPessoa implements Serializable {
     }
 
     public String editPessoa() {
-
+        
         return "/restrict/cadastrarpessoa.faces";
     }
     
@@ -62,7 +61,8 @@ public class MbPessoa implements Serializable {
         }else{
             updatePessoa();
         }
-        return null;
+        limpPessoa();
+        return editPessoa();
     }
 
     private void insertPessoa() {
@@ -75,6 +75,7 @@ public class MbPessoa implements Serializable {
 
     private void updatePessoa() {
         pessoaDAO().update(pessoa);
+        endereco.setPessoa(pessoa);
         enderecoDAO().update(endereco);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, " Atualização efetuada com sucesso", ""));

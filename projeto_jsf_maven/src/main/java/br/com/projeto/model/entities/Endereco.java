@@ -21,7 +21,7 @@ import org.hibernate.annotations.ForeignKey;
  * @author gabriel
  */
 @Entity
-@Table(name = "Endereco")
+@Table(name = "ENDERECO")
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 1L;

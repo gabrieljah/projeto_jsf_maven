@@ -50,8 +50,9 @@
                                     <f:validator validatorId="cpfValidator"/>
                                 </p:inputText>
 
-                                <h:outputLabel for="dataNascimento" value="Data de Nascimento.:"/>
+                                <h:outputLabel for="dataNascimento" value="Nascimento.:"/>
                                 <p:calendar id="dataNascimento" value="#{mbPessoa.pessoa.dataDeNascimento}"
+                                            yearRange="c-90"   
                                             required="true" requiredMessage="O campo [Data de Nascimento] é obrigatório"
                                             locale="pt_BR" navigator="true" effect="explode" pattern="dd/MM/yyyy"/>
 
@@ -111,7 +112,7 @@
                                 <p:inputText id="complemento" size="20" value="#{mbPessoa.endereco.complemento}" onkeyup="this.value = this.value.toUpperCase()"/>
 
                                 <p:panel>
-                                    <p:commandButton value="Salvar" action="#{mbPessoa.addPessoa}"
+                                    <p:commandButton value="Salvar" action="#{mbPessoa.addPessoa}" ajax="false"
                                                      image="ui-icon ui-icon-disk" update="@form"/>
                                     <p:commandButton value="Cancelar" actionListener="#{mbPessoa.limpPessoa}" 
                                                      image="ui-icon ui-icon-close" update="@form"/>

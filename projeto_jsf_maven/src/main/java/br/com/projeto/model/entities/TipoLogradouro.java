@@ -14,7 +14,7 @@ import org.hibernate.annotations.ForeignKey;
  * @author gabriel
  */
 @Entity
-@Table(name="TipoLogradouro")
+@Table(name="TIPO_LOGRADOURO")
 public class TipoLogradouro implements Serializable{
     
       private static final long serialVersionUID = 1L;
